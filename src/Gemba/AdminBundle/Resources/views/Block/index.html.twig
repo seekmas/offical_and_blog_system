@@ -1,0 +1,44 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block title %}GembaAdminBundle:Block:index{% endblock %}
+
+{% block body %}
+<div class="row">
+
+
+<div class="col-md-6">
+<div class="panel panel-default">
+    <div class="panel-heading">添加新模块</div>
+
+    <div class="panel-body">
+        {{form(form)}}
+    </div>
+</div>
+</div>
+
+
+<div class="col-md-6">
+<div class="panel panel-default">
+    <div class="panel-heading">添加新模块</div>
+
+    <div class="panel-body">
+        <div class="list-group">
+        {% for key , block in blocks %}
+            <a href="{{ path('sub_block_home' , {'id': block.id}) }}" class="list-group-item">
+
+            {{ key+1 }}. {{ block }}
+
+            - {{ block.description | striptags }}
+
+            <span class="label label-success">{{ block.sort }}</span>
+
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+{% endblock %}

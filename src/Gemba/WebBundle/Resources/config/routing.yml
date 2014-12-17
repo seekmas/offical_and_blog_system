@@ -1,0 +1,19 @@
+default_controller:
+     resource: "@GembaWebBundle/Controller/DefaultController.php"
+     type: annotation
+     prefix: /
+
+block_controller:
+     resource: "@GembaWebBundle/Controller/BlockController.php"
+     type: annotation
+     prefix: /
+
+blog_controller:
+     resource: "@GembaWebBundle/Controller/BlogController.php"
+     type: annotation
+     prefix: /blog
+
+upload_controller:
+     resource: "@GembaWebBundle/Controller/UploadController.php"
+     type: annotation
+     prefix: /upload

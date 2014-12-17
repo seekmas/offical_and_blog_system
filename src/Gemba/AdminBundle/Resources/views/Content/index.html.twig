@@ -1,0 +1,53 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block title %}GembaAdminBundle:Block:index{% endblock %}
+
+{% block body %}
+
+<div class="row"><div class="col-md-12">
+<table class="table table-bordered">
+
+    <tr>
+        <td> 创建</td>
+        <td> 展示效果</td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_text' , {'layout_id': layout_id}) }}">创建两列文本</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/text.png') }}" /></td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_smalltext' , {'layout_id': layout_id}) }}">创建简单文本</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/smalltext.png') }}" /></td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_left'  , {'layout_id': layout_id}) }}">创建左图右文</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/richtext.png') }}" /></td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_right'  , {'layout_id': layout_id}) }}">创建左文右图</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/richtext_2.png') }}" /></td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_top'  , {'layout_id': layout_id}) }}">创建上图下文</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/richtext_3.png') }}" /></td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_center'  , {'layout_id': layout_id}) }}">创建按钮展示框</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/featuretext.png') }}" /></td>
+    </tr>
+
+    <tr>
+        <td> <a class="btn btn-lg " href="{{ path('create_highlight' , {'layout_id': layout_id}) }}">创建高亮文本</a></td>
+        <td><img class="img-responsive" src="{{ asset('capture/highlight.png') }}" /></td>
+    </tr>
+
+</table>
+</div></div>
+
+{% endblock %}

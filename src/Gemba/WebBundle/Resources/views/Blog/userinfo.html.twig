@@ -1,0 +1,56 @@
+
+{% extends "GembaWebBundle::layout.html.twig" %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block nav %}
+
+    <div class="container">
+        <div class="sixteen columns">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li class="active">博客</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+<div id="contact">
+    {{ form_start(form) }}
+
+    <div id="contact-input">
+        <div>
+            <label for="name">{{ form_label(form.name) }}</label>
+            {{ form_widget(form.name) }}
+        </div>
+        <div>
+            <label for="email">{{ form_label(form.email) }}</label>
+            {{ form_widget(form.email) }}
+        </div>
+    </div>
+
+    <div id="contact-message">
+        <label for="comments">{{ form_label(form.description) }}</label>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div id="contact-message">
+        <label for="comments">{{ form_label(form.experience) }}</label>
+        {{ form_widget(form.experience) }}
+    </div>
+
+    <div id="contact-message">
+        <label for="comments">{{ form_label(form.skillList) }}</label>
+        {{ form_widget(form.skillList) }}
+    </div>
+
+    <div id="contact-submit">
+
+        {{ form_widget(form.save , {'attr': {'class': 'submit button black'}}) }}
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,61 @@
+
+{% extends "GembaWebBundle::layout.html.twig" %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block nav %}
+
+    <div class="container">
+        <div class="sixteen columns">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li class="active">博客</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+        {% for blog in blogs %}
+        <div class="sixteen columns">
+            <div class="underline-heading">
+                <h3><a href="{{ path('post' , {'id': blog.id}) }}">{{ blog.subject }}</a></h3>
+            </div>
+
+            <div class="row">
+            {% if blog.file %}
+            <div class="two columns">
+                <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ blog.file) }}" style="width: 120px;" />
+            </div>
+            <div class="twelve columns">
+                {{ blog.content | striptags | truncate(200) }}
+            </div>
+            {% else %}
+                {{ blog.content | striptags | truncate(200) }}
+            {% endif %}
+            </div>
+
+            <div class="container">
+                <div class="sixteen columns">
+                    <h4>信息/操作</h4>
+                    <a href="{{ path('update_blog' , {'id': blog.id}) }}" class="button small">编辑</a>
+                    <a href="#" class="button black small">评论 {{ blog.comment | length }}</a>
+                    <a href="#" class="button orange small">点击量 {{ blog.click }}</a>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <div class="sixteen columns"><hr></div>
+    </div>
+
+</div>
+{% endblock %}

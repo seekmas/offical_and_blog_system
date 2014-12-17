@@ -1,0 +1,195 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block title %}GembaAdminBundle:Block:index{% endblock %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h1>{{ block }}</h1>
+    </div>
+
+<div class="row">
+    {% for layout in block.layout %}
+
+        <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <div class="page-header">
+                <h3>{{ layout.subject }} <small>{{ layout.layout }}</small></h3>
+            </div>
+
+            {% for smalltext in layout.smalltext %}
+
+                {% if smalltext.style == 'smalltext' %}
+                <div class="row">
+                    <div class="sixteen columns">
+                        <div class="underline-heading">
+                            <h3>{{ smalltext.subject }}</h3>
+                        </div>
+                        <p>
+                            {{ smalltext.content | raw }}
+                        </p>
+                    </div>
+                    <div class="sixteen columns">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                序号: {{ smalltext.sort }}
+                                <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                                <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% elseif smalltext.style == 'highlight' %}
+
+                <div class="sixteen columns">
+                    <div class="jumbotron">
+                    <h2>{{ smalltext.subject }}</h2>
+                    <p>{{ smalltext.content | raw }}</p>
+                    <a href="{{ smalltext.link }}" target="_blank" class="button">详细</a>
+                    </div>
+                </div>
+
+                <div class="sixteen columns">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            序号: {{ smalltext.sort }}
+                            <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                            <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+                {% elseif smalltext.style == 'text' %}
+
+                    <div class="row">
+                        <div class="sixteen columns">
+                            <h1><strong class="color">{{ smalltext.subject }}</strong></h1>
+                        </div>
+                        <div class="eight columns">
+                            <h4><strong>{{ smalltext.lTitle }}</strong></h4>
+                            <p>{{ smalltext.lContent | raw }}</p>
+                        </div>
+                        <div class="eight columns">
+                            <h4><strong>{{ smalltext.rTitle }}</strong></h4>
+                            <p>{{ smalltext.rContent | raw }}</p>
+                        </div>
+                        <div class="sixteen columns"><hr class="spacer"></div>
+                        <div class="sixteen columns">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    序号: {{ smalltext.sort }}
+                                    <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                                    <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% elseif smalltext.style == 'left' %}
+
+                <div class="row">
+                    <div class="sixteen columns">
+                        <img src="{{ asset('attachments/' ~ smalltext.file) }}" alt="{{ smalltext.subject }}" class="image-left" style="width: 180px;">
+                        <h4>{{ smalltext.subject }}</h4>
+                        <p>{{ smalltext.content | raw }}</p>
+                    </div>
+
+                    <div class="sixteen columns">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                序号: {{ smalltext.sort }}
+                                <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                                <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% elseif smalltext.style == 'right' %}
+
+                    <div class="row">
+                        <div class="sixteen columns">
+                            <img src="{{ asset('attachments/' ~ smalltext.file) }}" alt="{{ smalltext.subject }}" class="image-right" style="width: 180px;">
+                            <h4>{{ smalltext.subject }}</h4>
+                            <p>{{ smalltext.content | raw }}</p>
+                        </div>
+
+                        <div class="sixteen columns">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    序号: {{ smalltext.sort }}
+                                    <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                                    <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% elseif smalltext.style == 'top' %}
+
+                    <div class="row">
+
+                        <div class="fourteen columns">
+                            <a href="{{ asset('attachments/' ~ smalltext.file) }}">
+                                <img src="{{ asset('attachments/' ~ smalltext.file) }}" alt="Image" class="image-center fancybox">
+                            </a>
+                            <h4>{{ smalltext.subject | raw }}</h4>
+                            <p>{{ smalltext.content | raw }}</p>
+                        </div>
+
+                        <div class="sixteen columns">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    序号: {{ smalltext.sort }}
+                                    <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                                    <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                {% elseif smalltext.style == 'center' %}
+
+                <div class="four columns">
+                    <a href="{{ smalltext.link }}">
+                        <div class="featured-box-2">
+                            <img src="{{ asset('attachments/'~smalltext.file) }}">
+                            <h4>{{ smalltext.subject | raw }}</h4>
+                            <p>
+                                {{ smalltext.content | raw }}
+                            </p>
+                        </div>
+                    </a>
+
+                    <div class="four columns">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                序号: {{ smalltext.sort }}
+                                <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                                <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            {% endfor %}
+
+                <div class="sixteen columns">
+                    <a href="{{ path('content_home' , {'layout_id': layout.id}) }}">添加内容</a>
+                </div>
+
+
+            </div>
+        </div>
+        </div>
+        <hr>
+
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

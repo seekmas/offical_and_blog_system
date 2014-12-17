@@ -1,0 +1,156 @@
+
+{% extends "GembaWebBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} 博客 {{ post.subject }}{% endblock %}
+
+{% block keywords %}{{ post.keywords | striptags }}{% endblock %}
+{% block description %}{{ post.content | striptags | truncate(100) }}{% endblock %}
+
+{% block nav %}
+
+    <div class="container">
+        <div class="sixteen columns">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li><a href="{{ path('blog_home') }}">博客</a></li>
+                <li class="active">{{ post.subject }}</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="twelve columns">
+        <!-- Blog post -->
+        <div class="twelve columns blog-post alpha">
+            <div class="post-meta">
+                <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ post.user.userinfo.file) }}" style="width: 90px;"/>
+
+                <ul>
+                    <li>{{ post.click }} 点击量</li>
+                    <li>{{ post.comment | length }} 条评论</li>
+                    <li>{{ post.createdAt | date('Y年m月d日') }}</li>
+                    <li>作者: <a href="#">{{ post.user.userinfo.name }}</a></li>
+                </ul>
+            </div>
+            <div class="post-content">
+
+                {% if post.file %}
+
+
+                    <img src="{{ asset('attachments/' ~ post.file) }}" />
+                    <hr/>
+
+                {% endif %}
+
+                <h3>{{ post.subject }}</h3>
+
+                <blockquote>
+                    <p>{{ post.keywords }}</p>
+                </blockquote>
+
+                {{ post.content | raw }}
+
+            <hr/>
+
+                <div class="four columns widget alpha">
+                    <h4 class="widget-title">关于作者</h4>
+                    <ul>
+                        <li><strong>作者</strong>: {{ post.user.userinfo.name }}</li>
+
+                        <li><strong>Email</strong>: {{ post.user.userinfo.email }}</li>
+
+                        <li><strong>工作经历</strong>: {{ post.user.userinfo.experience }}</li>
+
+                        <li><strong>特长技能</strong>: {{ post.user.userinfo.skillList }}</li>
+
+                        <li><strong>介绍</strong>: <small>{{ post.user.userinfo.description }}</small></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Comments lists -->
+        <div class="twelve columns alpha">
+            <div class="underline-heading">
+                <h4><strong>评论</strong> {{ post.comment | length }}</h4>
+            </div>
+            <ol class="comment-list">
+                {% for comment in post.comment %}
+                <li>
+                    <div class="comment-area">
+                        <div class="comment-avatar"><img src="{{ asset('anonymous-question-avatar.png') }}" alt="Avatar"></div>
+                        <div class="comment-description">
+                            <div class="comment-by">
+                                <strong>{{ comment.name }}</strong>
+                                <span class="published">{{ comment.createdAt | date('Y年m月d日') }}</span>
+                            </div>
+                            <p>{{ comment.comment }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+        <!-- Comments respond -->
+        <div class="twelve columns alpha">
+
+            {{ form_start(form) }}
+                <h4>发表评论</h4>
+                <div id="respond-input">
+                    <div>
+                        <label>{{ form_label(form.name) }}</label>
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div>
+                        <label>{{ form_label(form.email) }}</label>
+                        {{ form_widget(form.email) }}
+                    </div>
+                    <div>
+                        <label>{{ form_label(form.job) }}</label>
+                        {{ form_widget(form.job) }}
+                    </div>
+                </div>
+                <div id="respond-textarea">
+                    <div>
+                        <label>{{ form_label(form.comment) }}</label>
+                        {{ form_widget(form.comment) }}
+                    </div>
+                </div>
+                <div id="respond-submit">
+                    {{ form_widget(form.save , {'attr': {'class': 'button'}}) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="four columns sidebar">
+        <!-- Latest posts widget -->
+        <div class="four columns widget alpha">
+            <h4 class="widget-title">最新博客</h4>
+            <ul class="latest-posts">
+
+                <!-- Post -->
+                {% for p in latest %}
+                    <li>
+                        <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.user.userinfo.file) }}" alt="Post">
+                        <div class="meta">
+                            <h4><a href="{{ path('post' , {'id': p.id}) }}">{{ p.subject }}</a></h4>
+                            <small>{{ p.createdAt | date('Y年m月d日') }}</small>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

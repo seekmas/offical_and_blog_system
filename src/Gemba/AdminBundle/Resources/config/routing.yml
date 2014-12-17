@@ -1,0 +1,19 @@
+default_controller:
+     resource: "@GembaAdminBundle/Controller/DefaultController.php"
+     type: annotation
+     prefix: /
+
+block_controller:
+     resource: "@GembaAdminBundle/Controller/BlockController.php"
+     type: annotation
+     prefix: /block
+
+content_controller:
+     resource: "@GembaAdminBundle/Controller/ContentController.php"
+     type: annotation
+     prefix: /content
+
+layout_controller:
+     resource: "@GembaAdminBundle/Controller/LayoutController.php"
+     type: annotation
+     prefix: /layout

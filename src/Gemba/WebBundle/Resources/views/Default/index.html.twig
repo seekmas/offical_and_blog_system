@@ -1,0 +1,173 @@
+{% extends "GembaWebBundle::layout.html.twig" %}
+
+{% block title %}擀霸咨询{% endblock %}
+
+{% block nav %}
+
+    <div class="container">
+        <div class="sixteen columns">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="insider">
+    <!-- Nivo SLider -->
+    <div id="nivoslider" class="nivoSlider theme-light">
+        <img src="{{ asset('template/img/980x380.gif') }}" alt="" title="#htmlcaption1"/>
+        <img src="{{ asset('template/img/980x380.gif') }}" alt="" title="#htmlcaption2"/>
+    </div>
+    <div id="htmlcaption1" class="nivo-caption">
+        <iframe height=500 src="http://player.youku.com/embed/XODUwMTIzNzc2" frameborder=0 allowfullscreen></iframe>
+        <p>Developed to fit all sizes, from desktop monitors<br/>to mobile phones.</p>
+        <p><a href="#" class="button black">Read more</a></p>
+    </div>
+    <div id="htmlcaption2" class="nivo-caption">
+        <h3>Used latest techniques.</h3>
+        <p>Well-written documentation with<br/>any tweek you can imagine.</p>
+    </div>
+</div>
+
+    <div class="main-wrapper">
+        <div class="container">
+
+            <div class="row">
+
+                {% for layout in layouts if layout.smalltext | length %}
+
+                <div class="sixteen columns">
+                    <div class="underline-heading">
+                        <h4 class="">{{ layout.subject }}</h4>
+                    </div>
+                </div>
+
+                {% for text in layout.smalltext %}
+
+                {% if layout.layout == 'one_column' %}
+                <div class="sixteen columns">
+                    {% elseif layout.layout == 'two_column' %}
+                    <div class="eight columns">
+                        {% elseif layout.layout == 'three_column' %}
+                        <div class="one-third column">
+                            {% elseif layout.layout == 'four_column' %}
+                            <div class="four columns">
+                                {% endif %}
+
+                                {% if text.style == 'text' %}
+                                {% if text.link %}
+                                    <h1><a href="{{ text.link }}">{{ text.subject | raw }}</a></h1>
+                                {% else %}
+                                    <h1>{{ text.subject | raw }}</h1>
+                                {% endif %}
+                            </div>
+                            <div class="eight columns">
+                                <h4><strong>{{ text.lTitle | raw }}</strong></h4>
+                                {{ text.lContent | raw }}
+                            </div>
+
+                            <div class="eight columns">
+                                <h4><strong>{{ text.rTitle | raw }}</strong></h4>
+                                {{ text.rContent | raw }}
+                            </div>
+                            <div>
+                                {% elseif text.style == 'smalltext' %}
+
+
+                                    <div class="underline-heading">
+                                        <h3>{{ text.subject | raw }}</h3>
+                                    </div>
+                                    {{ text.content | raw }}
+
+                                {% elseif text.style == 'left' %}
+                                    <a href="{{ asset('attachments/'~text.file) }}">
+                                        <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-left fancybox">
+                                    </a>
+                                    <h4>{{ text.subject | raw }}</h4>
+                                    {{ text.content | raw }}
+
+                                {% elseif text.style == 'right' %}
+                                    <a href="{{ asset('attachments/'~text.file) }}">
+                                        <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-right fancybox">
+                                    </a>
+                                    <h4>{{ text.subject | raw }}</h4>
+                                    {{ text.content | raw }}
+
+                                {% elseif text.style == 'center' %}
+
+                                    <a href="{{ text.link }}">
+                                        <div class="featured-box-2">
+                                            <img src="{{ asset('attachments/'~text.file) }}">
+                                            <h4>{{ text.subject | raw }}</h4>
+
+                                            {{ text.content | raw }}
+
+                                        </div>
+                                    </a>
+                                {% elseif text.style == 'top' %}
+                                    <a href="{{ asset('attachments/'~text.file) }}">
+                                        <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-center fancybox">
+                                    </a>
+                                    <h4>{{ text.subject | raw }}</h4>
+                                    {{ text.content | raw }}
+
+                                {% elseif text.style == 'highlight' %}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="full-width-container light text-center">
+                        <div class="container">
+                            <div class="row">
+
+                                <h2>{{ text.subject | raw }}</h2>
+                                {{ text.content | raw }}
+                                <a href="{{ text.link }}" target="_blank" class="button">详细</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-wrapper">
+                        <div class="container">
+                            <div class="row">
+
+                                {% endif %}
+                            </div>
+
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="sixteen columns">
+            <div class="underline-heading">
+                <h4 class="">热门博客</h4>
+            </div>
+            <p>一些点击量最高的热门的博客</p>
+        </div>
+        <!-- Carousel -->
+        <div style="overflow: visible;" class="carousel touchcarousel grey-blue">
+            <div style="cursor: grab;" class="touchcarousel-wrapper"><div style="width: 1440px; left: 0px;" class="touchcarousel-container">
+                    {% for blog in blogs %}
+                    <!-- Item -->
+                    <div class="four columns touchcarousel-item">
+                        <img src="{{ asset('attachments/' ~ blog.file) | imagine_filter('poster') }}" alt="Post" class="image-polaroid">
+                        <h4><a href="{{ path('post' , {'id': blog.id}) }}">{{ blog.subject }}</a></h4>
+                        <p>{{ blog.content | striptags | truncate(50) }}</p>
+                    </div>
+                    {% endfor %}
+
+                </div></div>
+            <div class="scrollbar-holder"><div style="width: 632px; left: 0px;" class="scrollbar dark"></div></div></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+services:
+    entity_factory:
+        class: Gemba\AdminBundle\Factory\EntityFactory
+        arguments: [@service_container]
+
+    type_factory:
+        class: Gemba\AdminBundle\Factory\TypeFactory
+        arguments: [@service_container]
+
+    form_factory:
+        class: Gemba\AdminBundle\Factory\FormFactory
+        arguments: [@service_container]
+
+    submit_listener:
+        class: Gemba\AdminBundle\EventListener\FormSubmitListener
+        arguments: [@service_container]
+        tags:
+            - { name: kernel.event_listener , event: form.post_bind , method: onSubmit }
+
+    block_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Block ]
+
+    block:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@block_repository]
+
+    layout_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Layout ]
+
+    layout:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@layout_repository]
+
+    text_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Text ]
+
+    text:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@text_repository]
+
+    smalltext_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Smalltext ]
+
+    smalltext:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@smalltext_repository]
+
+    blog_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Blog ]
+
+    blog:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@blog_repository]
+
+    comment_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Comment ]
+
+    comment:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@comment_repository]
+
+    menu_chuck:
+        class: Gemba\AdminBundle\Chuck\MenuChuck
+        arguments: [@service_container]

@@ -1,0 +1,47 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block title %}GembaAdminBundle:Block:index{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">添加新布局</div>
+
+                    <div class="panel-body">
+                        {{ form(form) }}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">管理</div>
+
+                    <div class="panel-body">
+
+                        {% for block in blocks %}
+                            <p>
+                                <a class="btn" href="{{ path('layout_edit' , {'id': block.id}) }}">
+                                    {{ block }} <span class="label label-success">{{ block.layout | length }}</span>
+                                </a>
+                            </p>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

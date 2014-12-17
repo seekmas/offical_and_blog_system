@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en">
+<!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Type description of your website.">
+    <meta name="keywords" content="Type keywords that describe your website.">
+    <meta name="author" content="Type author or brand which has built this website.">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{{ asset('template/lib/css/green.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('template/lib/css/queries.css') }}" type="text/css" media="all">
+    <link href='//fonts.useso.com/css?family=Open+Sans:400italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{{ asset('template/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('template/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('template/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('template/apple-touch-icon-114x114.png') }}">
+
+    <!-- Javascripts
+    ================================================== -->
+    <script src="{{ asset('template/lib/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.twitter.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.menu.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.mobilemenu.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.quicksand.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.tabs.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.flickr.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.easing.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.nivoslider.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.touchcarousel.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.contact.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.custom.js') }}"></script>
+</head>
+
+<!-- Start Document and Body Pattern -->
+<body class="pat9">
+
+<!-- Boxed Wrapper -->
+<div id="wrapper" class="boxed">
+
+<!-- Header -->
+<div id="header">
+    <!-- Header Top -->
+    <div class="container hTop">
+        <div class="row">
+            <div class="sixteen columns">
+                <p>全球最资深的企业咨询公司. <a href="#">在线预约顾问</a></p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Logo and search bar-->
+    <div class="container hMiddle">
+        <div class="row">
+            <div class="twelve columns">
+                <div id="logo">
+                    <a href="/"><img style="width: 150px;" src="{{ asset('logo_gemba.png') }}" alt="Adeodatus"></a>
+                </div>
+            </div>
+            <div class="four columns">
+                <form class="hSearchbox">
+                    <input type="text" placeholder="搜索案例" class="hSearchInput"/>
+                    <input type="submit" value="Send" class="hSearchSubmit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Navigation -->
+    <div class="container hBottom">
+        <div class="row">
+            <div class="sixteen columns">
+
+                <ul id="menu">
+                    <li><a href="#" class="current">Home</a>
+                        <ul>
+                            <li><a href="#">Full width slider</a></li>
+                            <li><a href="#">No slider</a></li>
+                            <li><a href="#">Touch carousel</a></li>
+                            <li><a href="#">Alternative layout</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">About us</a>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Second drop down</a>
+                                <ul>
+                                    <li><a href="#">Easy to edit</a></li>
+                                    <li><a href="#">Awesome design</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Features</a>
+                        <ul>
+                            <li><a href="#">Typography</a></li>
+                            <li><a href="#">Columns</a></li>
+                            <li><a href="#">Cool icons</a></li>
+                            <li><a href="#">Featured boxes</a></li>
+                            <li><a href="#">Lists styles</a></li>
+                            <li><a href="#">Pricing columns</a></li>
+                            <li><a href="#">Tabs and toggles</a></li>
+                            <li><a href="#">Buttons and boxes</a></li>
+                            <li><a href="#">Images</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Portfolio</a>
+                        <ul>
+                            <li><a href="#">4 Columns - Polaroid</a></li>
+                            <li><a href="#">3 Columns - Circle</a></li>
+                            <li><a href="#">2 Columns - Rounded</a></li>
+                            <li><a href="#">Portfolio item</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Our blog</a>
+                        <ul>
+                            <li><a href="#">Blog category</a></li>
+                            <li><a href="#">Left sidebar</a></li>
+                            <li><a href="#">Single post</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Insider -->
+<div id="insider">
+    <!-- Nivo SLider -->
+    <div id="nivoslider" class="nivoSlider theme-light">
+        <img src="{{ asset('template/img/980x380.gif') }}" alt="" title="#htmlcaption1"/>
+        <img src="{{ asset('template/img/980x380.gif') }}" alt="" title="#htmlcaption2"/>
+    </div>
+    <div id="htmlcaption1" class="nivo-caption">
+        <h3>Mobile ready HTML5 template.</h3>
+        <p>Developed to fit all sizes, from desktop monitors<br/>to mobile phones.</p>
+        <p><a href="#" class="button black">Read more</a></p>
+    </div>
+    <div id="htmlcaption2" class="nivo-caption">
+        <h3>Used latest techniques.</h3>
+        <p>Well-written documentation with<br/>any tweek you can imagine.</p>
+    </div>
+</div>
+
+<!-- Content -->{% block body %}{% endblock %}<!-- Content -->
+
+
+<!-- Footer -->
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="one-third column">
+                <h4>Adeodatus.</h4>
+                <p>Sleek, unique and powerful template for better and professionall presentation.<br/>
+                    Adeodatus template can be found only on Themeforest.net.</p>
+            </div>
+            <div class="one-third column">
+                <h4>Latest from Twitter.</h4>
+                <div class="tweet"></div>
+            </div>
+            <div class="one-third column">
+                <h4>Flickr Feed.</h4>
+                <div class="flickr"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Copyright -->
+<div id="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="eight columns copy-info">
+                <p>&copy; 2014 擀霸中国. 版权所有.</p>
+            </div>
+            <div class="eight columns copy-social">
+                <ul class="social-icons">
+                    <li class="vimeo"><a href="#"></a></li>
+                    <li class="twitter"><a href="#"></a></li>
+                    <li class="facebook"><a href="#"></a></li>
+                    <li class="pinterest"><a href="#"></a></li>
+                    <li class="dribbble"><a href="#"></a></li>
+                    <li class="behance"><a href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Boxed Wrapper -->
+</div>
+
+</body>
+</html>

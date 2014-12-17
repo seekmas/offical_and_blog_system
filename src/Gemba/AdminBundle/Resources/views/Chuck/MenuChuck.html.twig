@@ -1,0 +1,20 @@
+<div class="sixteen columns">
+    <ul class="sf-js-enabled" id="menu">
+        {% for block in blocks %}
+
+            {% if block.aliasForUrl == '/' %}
+
+                <li><a href="/">{{ block }}</a></li>
+
+            {% else %}
+
+                <li><a href="{{ path('block_show' , {'alias': block.aliasForUrl}) }}">{{ block }}</a></li>
+
+            {% endif %}
+
+
+
+        {% endfor %}
+        <li><a href="{{ path('blog_home') }}">顾问博客</a></li>
+    </ul>
+</div>

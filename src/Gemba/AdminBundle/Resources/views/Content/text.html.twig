@@ -1,0 +1,50 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block title %}GembaAdminBundle:Block:index{% endblock %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>创建两列文本</h2>
+        </div>
+    </div>
+
+{{ form_start(form) }}
+
+    <div class="col-md-12">
+        {{ form_row(form.subject) }}
+    </div>
+
+    <div class="col-md-6">
+
+        {{ form_row(form.lTitle) }}
+
+        {{ form_row(form.lContent) }}
+
+    </div>
+
+
+    <div class="col-md-6">
+
+        {{ form_row(form.rTitle) }}
+
+        {{ form_row(form.rContent) }}
+
+    </div>
+
+    <div class="col-md-12">
+
+        {{ form_row(form.link) }}
+
+    </div>
+
+    <div class="col-md-12">
+        {{ form_row(form.save) }}
+    </div>
+
+{{ form_end(form) }}
+
+{% endblock %}

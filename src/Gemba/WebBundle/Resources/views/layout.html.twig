@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en">
+<!--<![endif]-->
+<head>
+    <title>{% block title %}擀霸咨询{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{{ asset('template/lib/css/blue.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('template/lib/css/queries.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('dist/css/makoto.css') }}" type="text/css" media="all">
+
+
+    <link href='//fonts.useso.com/css?family=Open+Sans:400italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{{ asset('template/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('template/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('template/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('template/apple-touch-icon-114x114.png') }}">
+
+    <!-- Javascripts
+    ================================================== -->
+    <script src="{{ asset('template/lib/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.twitter.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.menu.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.mobilemenu.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.quicksand.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.tabs.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.flickr.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.easing.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.nivoslider.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.touchcarousel.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.contact.js') }}"></script>
+    <script src="{{ asset('template/lib/js/jquery.custom.js') }}"></script>
+</head>
+
+<!-- Start Document and Body Pattern -->
+<body class="pat9">
+
+
+<!-- Boxed Wrapper -->
+<div id="wrapper" class="boxed">
+
+<!-- Header -->
+<div id="header">
+    <!-- Header Top -->
+    <div class="container hTop">
+        <div class="row">
+            <div class="sixteen columns">
+                <p>全球最资深的企业咨询公司.
+            </div>
+
+            {% if is_granted("ROLE_USER") %}
+                <div class="menu">
+                    <a class="btn" href="{{ path('write_blog') }}">写博客</a>
+                    <a class="btn" href="{{ path('user_blog' , {'userId': app.user.id}) }}">我的博客</a>
+                    <a class="btn" href="{{ path('user_info') }}">个人资料</a>
+                    <a class="btn" href="{{ path('fos_user_security_logout') }}">退出</a>
+                </div>
+            {% else %}
+            <div class="menu">
+                <a class="btn" href="{{ path('fos_user_security_login') }}">登陆</a>
+                <a class="btn" href="/">在线咨询</a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <hr>
+    <!-- Logo and search bar-->
+    <div class="container hMiddle">
+        <div class="row">
+            <div class="twelve columns">
+                <div id="logo">
+                    <a href="/"><img style="width: 150px;" src="{{ asset('logo_gemba.png') }}" alt="Adeodatus"></a>
+                </div>
+            </div>
+            <div class="four columns">
+                <form class="hSearchbox">
+                    <input type="text" placeholder="搜索案例" class="hSearchInput"/>
+                    <input type="submit" value="Send" class="hSearchSubmit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Navigation -->
+    <div class="container hBottom">
+        <div class="row">
+            {{ chuck('menu_chuck') }}
+        </div>
+    </div>
+</div>
+
+    <div id="insider">
+        {% block nav %}{% endblock %}
+    </div>
+
+    <div class="main-wrapper">
+    <div class="container">
+    <!-- Content -->
+
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block body %}{% endblock %}
+    <!-- Content -->
+    </div>
+    </div>
+
+<!-- Footer -->
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="one-third column">
+                <h4>Adeodatus.</h4>
+
+            </div>
+            <div class="one-third column">
+                <h4>Latest from Twitter.</h4>
+
+            </div>
+            <div class="one-third column">
+                <h4>Flickr Feed.</h4>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Copyright -->
+<div id="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="eight columns copy-info">
+                <p>&copy; 2014 擀霸中国. 版权所有.</p>
+            </div>
+            <div class="eight columns copy-social">
+                <ul class="social-icons">
+                    <li class="vimeo"><a href="#"></a></li>
+                    <li class="twitter"><a href="#"></a></li>
+                    <li class="facebook"><a href="#"></a></li>
+                    <li class="pinterest"><a href="#"></a></li>
+                    <li class="dribbble"><a href="#"></a></li>
+                    <li class="behance"><a href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Boxed Wrapper -->
+</div>
+
+<link rel="stylesheet" href="{{ asset('redactor/redactor/redactor.css') }}" />
+<script src="{{ asset('redactor/redactor/redactor.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(
+            function()
+            {
+                $('#gemba_adminbundle_blog_content').redactor({
+                    fixed: true ,
+                    minHeight: 200 ,
+                    imageUpload: '{{ path('upload') }}'
+                });
+            });
+</script>
+
+</body>
+</html>

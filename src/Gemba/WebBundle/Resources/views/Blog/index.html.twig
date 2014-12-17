@@ -1,0 +1,120 @@
+
+{% extends "GembaWebBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} 顾问博客 {% endblock %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block nav %}
+
+    <div class="container">
+        <div class="sixteen columns">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li class="active">博客</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <!-- Blog -->
+            <div class="twelve columns">
+
+                {% for blog in blogs %}
+
+                    <!-- Blog post -->
+                    <div class="twelve columns blog-post alpha">
+                        <div class="post-meta">
+                            <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ blog.user.userinfo.file) }}" style="width: 90px;"/>
+
+                            <ul>
+                                <li>{{ blog.click }} 点击量</li>
+                                <li>{{ blog.comment | length }} 条评论</li>
+                                <li>{{ blog.createdAt | date('Y年m月d日') }}</li>
+                                <li>作者: <a href="#">{{ blog.user.userinfo.name }}</a></li>
+                            </ul>
+                        </div>
+                        <div class="post-content">
+
+                            {% if blog.file %}
+
+                                <img src="{{ asset('attachments/' ~ blog.file) | imagine_filter('blog_banner') }}" />
+
+                            {% endif %}
+
+                            <h3>
+                                <a href="{{ path('post' , {'id': blog.id}) }}">{{ blog.subject }}</a>
+                            </h3>
+
+                            <small>主题: {{ blog.keywords }}</small>
+
+                            <p>{{ blog.content | striptags | truncate(240) }}</p>
+
+                            <a href="{{ path('post' , {'id': blog.id}) }}" class="button">阅读全文</a>
+                        </div>
+                    </div>
+                    <!-- Blog post with slider -->
+
+
+                {% endfor %}
+
+                <!-- Pagination -->
+                <div class="twelve columns">
+                    <div class="navigation">
+                        {{ knp_pagination_render(blogs) }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="four columns sidebar">
+                <!-- Latest posts widget -->
+                <div class="four columns widget alpha">
+                    <h4 class="widget-title">最近更新.</h4>
+                    <ul class="latest-posts">
+
+                        {% for p in latest %}
+                        <!-- Post -->
+                        <li>
+                            <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.user.userinfo.file) }}" alt="Post">
+                            <div class="meta">
+                                <h4><a href="{{ path('post' , {'id': p.id}) }}">{{ p.subject }}</a></h4>
+                                <small>{{ p.createdAt | date('Y年m月d日') }}</small>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="four columns sidebar">
+                <!-- Latest posts widget -->
+                <div class="four columns widget alpha">
+                    <h4 class="widget-title">最新评论.</h4>
+                    <ul class="latest-posts">
+
+                        {% for c in comments %}
+                            <!-- Post -->
+                            <li>
+                                <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('anonymous-question-avatar.png') }}" alt="Post">
+                                <div class="meta">
+
+                                    <h4><a href="{{ path('post' , {'id': c.blog.id}) }}">{{ c.comment }}</a></h4>
+                                    <small>{{ c.createdAt | date('Y年m月d日') }}</small>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

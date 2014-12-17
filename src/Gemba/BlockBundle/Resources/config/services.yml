@@ -1,0 +1,6 @@
+services:
+    render.chuck:
+        class: Gemba\BlockBundle\Twig\RenderChuckExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }

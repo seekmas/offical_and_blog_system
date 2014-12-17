@@ -1,0 +1,24 @@
+hr {
+    color: #95C53D;
+    height: 1px;
+    border: none;
+    border-top: 1px dashed #0066CC;
+}
+
+div.menu {
+    position: absolute;
+    padding: 10px;
+    top: 5px;
+    right: 0px;
+
+    color: #fff;
+    background: #2CAADA;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+div.menu > a {
+    z-index: 200;
+    color: #ffffff;
+    margin-right: 5px;
+}
