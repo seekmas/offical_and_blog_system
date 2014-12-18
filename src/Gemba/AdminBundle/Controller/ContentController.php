@@ -317,4 +317,39 @@ class ContentController extends Controller
 
         return ['form' => $form->createView()];
     }
+
+    /**
+     * @Route("/{layout_id}/create_video" , name="create_video")
+     * @Template()
+     */
+    public function videoAction(Request $request , $layout_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dispatcher = $this->get('event_dispatcher');
+        $layout = $this->get('layout')->find($layout_id);
+
+        $smalltext = $this->get('entity_factory')->create('smalltext');
+        $type = $this->get('type_factory')->create('video');
+
+        $form = $this->createForm($type , $smalltext);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $event = new FormEvent($form , $smalltext);
+            $dispatcher->dispatch(FormEvents::POST_SUBMIT , $event);
+
+            $smalltext->setLayout($layout);
+            $smalltext->setStyle('video');
+
+            $em->persist($smalltext);
+            $em->flush();
+
+
+            $this->addFlash('success' , '内容创建成功');
+            return $this->redirectToRoute('content_home' , ['layout_id' => $layout_id]);
+        }
+
+        return ['form' => $form->createView()];
+    }
 }

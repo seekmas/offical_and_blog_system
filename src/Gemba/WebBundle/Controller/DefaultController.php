@@ -16,10 +16,18 @@ class DefaultController extends Controller
     {
         $block = $this->get('block')->findOneBy(['aliasForUrl' => '/']);
         $blogs = $this->get('blog')->setLimit(10)->findAllOrderBy('click' , 'desc');
+
+        $seo = $this->get('seo')->find(1);
+
+
+        $sliders = $this->get('slider')->findAll();
+
         return [
             'block' => $block,
             'blogs' => $blogs ,
-            'layouts' => $block->getLayout()
+            'layouts' => $block->getLayout() ,
+            'sliders' => $sliders ,
+            'seo' => $seo ,
         ];
     }
 }

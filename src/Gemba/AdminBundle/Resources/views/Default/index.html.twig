@@ -2,5 +2,106 @@
 
 {% block body %}
 
+    <div class="row">
+        <div class="col-md-4">
+            <div class="page-header">
+                <h2>首页SEO</h2>
+            </div>
 
+            {{ form(seo_form) }}
+        </div>
+        <div class="col-md-4">
+            <div class="page-header">
+                <h2>Logo</h2>
+            </div>
+
+            {% if logo.file %}
+                <img src="{{ asset('attachments/'~logo.file) }}" />
+            {% endif %}
+
+            {{ form(logo_form) }}
+        </div>
+        <div class="col-md-4">
+            <div class="page-header">
+                <h2>底部copyright信息</h2>
+            </div>
+
+            {{ form(copyright_form) }}
+        </div>
+
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>管理Slider</h2>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>添加Slider</h3>
+            </div>
+
+            {{ form(form) }}
+        </div>
+
+        <div class="col-md-6">
+
+
+            {% for slider in sliders %}
+
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h3>{{ slider.subject }}
+                            <small>
+
+                                <a href="{{ path('slider_edit' , {'id': slider.id}) }}">编辑</a>
+                                <a href="{{ path('slider_delete' , {'id': slider.id}) }}">删除</a>
+
+                            </small>
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="col-md-6">{{ slider.content | raw }}</div>
+
+                <div class="col-md-6">
+
+                    <img src="{{ asset('attachments/'~slider.file) }}" />
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>管理底部网站信息</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>添加Column</h3>
+            </div>
+
+            {{ form(bottom_form) }}
+        </div>
+
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>管理Column</h3>
+            </div>
+
+            {% for bottom in bottoms %}
+
+                <h3>{{ bottom.subject }}</h3>
+                <p>{{ bottom.content | raw }}</p>
+                <p>
+                    <a href="{{ path('bottom_edit' , {'id': bottom.id}) }}">编辑</a>
+                    <a href="{{ path('bottom_delete' , {'id': bottom.id}) }}">删除</a>
+                </p>
+            {% endfor %}
+
+        </div>
+
+    </div>
 {% endblock %}

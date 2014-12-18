@@ -15,7 +15,11 @@
         <div class="panel panel-default">
             <div class="panel-body">
             <div class="page-header">
-                <h3>{{ layout.subject }} <small>{{ layout.layout }}</small></h3>
+                <h3>{{ layout.subject }}
+                    <small>{{ layout.layout }}
+                        <a href="{{ path('layout_update' , {'id': layout.id}) }}">编辑</a> <a href="">删除</a>
+                    </small>
+                </h3>
             </div>
 
             {% for smalltext in layout.smalltext %}
@@ -40,6 +44,7 @@
                         </div>
                     </div>
                 </div>
+                    <hr/>
                 {% elseif smalltext.style == 'highlight' %}
 
                 <div class="sixteen columns">
@@ -59,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-
+                    <hr/>
                 {% elseif smalltext.style == 'text' %}
 
                     <div class="row">
@@ -85,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr/>
                 {% elseif smalltext.style == 'left' %}
 
                 <div class="row">
@@ -104,9 +109,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
+                    <hr/>
                 {% elseif smalltext.style == 'right' %}
 
                     <div class="row">
@@ -126,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr/>
                 {% elseif smalltext.style == 'top' %}
 
                     <div class="row">
@@ -148,21 +152,20 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <hr/>
                 {% elseif smalltext.style == 'center' %}
 
                 <div class="four columns">
-                    <a href="{{ smalltext.link }}">
+                    <a {% if smalltext.link %}href="{{ smalltext.link }}{% endif %}">
                         <div class="featured-box-2">
-                            <img src="{{ asset('attachments/'~smalltext.file) }}">
+                            <img style="width: 170px;height: 100px;" src="{{ asset('attachments/'~smalltext.file) }}">
                             <h4>{{ smalltext.subject | raw }}</h4>
                             <p>
                                 {{ smalltext.content | raw }}
                             </p>
                         </div>
                     </a>
-
                     <div class="four columns">
                         <div class="panel panel-default">
                             <div class="panel-body">
@@ -173,6 +176,29 @@
                         </div>
                     </div>
                 </div>
+
+                {% elseif smalltext.style == 'video' %}
+                <div class="sixteen columns">
+                    <h3>{{ smalltext.subject }}</h3>
+                    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="{{ smalltext.lTitle }}px" height="{{ smalltext.rTitle }}px"
+                           poster="{{ asset('attachments/'~smalltext.file) }}"
+                           data-setup="{}">
+                        <source src="{{ smalltext.link }}" type='video/mp4' />
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                    </video>
+                </div>
+
+                <div class="sixteen columns">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            序号: {{ smalltext.sort }}
+                            <a href="{{ path('content_edit' , {'content_id': smalltext.id}) }}">Edit</a>
+                            <a href="{{ path('content_remove' , {'id': smalltext.id}) }}">Delete</a>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+
                 {% endif %}
 
             {% endfor %}

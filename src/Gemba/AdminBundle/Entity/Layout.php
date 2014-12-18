@@ -73,11 +73,6 @@ class Layout
     private $deletedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="Text" , mappedBy="layout")
-     */
-    private $text;
-
-    /**
      * @ORM\OneToMany(targetEntity="Smalltext" , mappedBy="layout")
      * @ORM\OrderBy({"sort" = "ASC"})
      */

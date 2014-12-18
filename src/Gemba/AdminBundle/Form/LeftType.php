@@ -15,14 +15,14 @@ class LeftType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject')
-            ->add('content')
-            ->add('file' , 'file' , ['data_class' => null , 'required' => false ])
-            ->add('link')
-            ->add('sort')
+            ->add('subject' , null , ['label' => '标题'])
+            ->add('content' , null , ['label' => '内容'])
+            ->add('file' , 'file' , [ 'label' => '配图' , 'data_class' => null , 'required' => false ])
+            ->add('link' , null , ['label' => '链接'])
+            ->add('sort' , null , ['label' => '序号'])
         ;
 
-        $builder->add('save' , 'submit');
+        $builder->add('save' , 'submit' , ['label' => '确定']);
     }
 
     /**

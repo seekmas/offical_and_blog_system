@@ -1,0 +1,47 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>编辑Slider</h3>
+            </div>
+
+            {{ form(form) }}
+        </div>
+
+        <div class="col-md-6">
+
+
+            {% for slide in sliders %}
+
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h3>{{ slide.subject }}
+                            <small>
+
+                                <a href="{{ path('slider_edit' , {'id': slide.id}) }}">编辑</a>
+                                <a href="">删除</a>
+
+                            </small>
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="col-md-6">{{ slide.content | raw }}</div>
+
+                <div class="col-md-6">
+
+                    <img src="{{ asset('attachments/'~slide.file) }}" />
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+{% endblock %}

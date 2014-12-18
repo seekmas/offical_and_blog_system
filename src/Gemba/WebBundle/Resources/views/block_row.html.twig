@@ -1,0 +1,119 @@
+<div class="row">
+
+    {% for layout in layouts if layout.smalltext | length %}
+
+    <div class="sixteen columns">
+        <div class="underline-heading">
+            <h4 class="">{{ layout.subject }}</h4>
+        </div>
+    </div>
+
+    {% for text in layout.smalltext %}
+
+    {% if layout.layout == 'one_column' %}
+    <div class="sixteen columns">
+        {% elseif layout.layout == 'two_column' %}
+        <div class="eight columns">
+            {% elseif layout.layout == 'three_column' %}
+            <div class="one-third column">
+                {% elseif layout.layout == 'four_column' %}
+                <div class="four columns">
+                    {% endif %}
+
+                    {% if text.style == 'text' %}
+                        {% if text.link %}
+                            <h1><a href="{{ text.link }}">{{ text.subject | raw }}</a></h1>
+                        {% else %}
+                            <h1>{{ text.subject | raw }}</h1>
+                        {% endif %}
+                        </div>
+                        <div class="eight columns">
+                            <h4><strong>{{ text.lTitle | raw }}</strong></h4>
+                            {{ text.lContent | raw }}
+                        </div>
+                        <div class="eight columns">
+                            <h4><strong>{{ text.rTitle | raw }}</strong></h4>
+                            {{ text.rContent | raw }}
+                        </div>
+                        <div>
+                    {% elseif text.style == 'smalltext' %}
+                        <div class="underline-heading">
+                            {% if text.link %}
+                                <h3><a href="{{ text.link }}">{{ text.subject | raw }}</a></h3>
+                            {% else %}
+                                <h3>{{ text.subject | raw }}</h3>
+                            {% endif %}
+
+                        </div>
+                        {{ text.content | raw }}
+                    {% elseif text.style == 'video' %}
+                            <div class="underline-heading">
+                                <h3>{{ text.subject }}</h3>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="{{ text.lTitle }}px" height="{{ text.rTitle }}px"
+                                       poster="{{ asset('attachments/'~text.file) }}"
+                                       data-setup="{}">
+                                    <source src="{{ text.link }}" type='video/mp4' />
+                                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                </video>
+                            </div>
+                    {% elseif text.style == 'left' %}
+                        <a href="{{ asset('attachments/'~text.file) }}">
+                            <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-left fancybox">
+                        </a>
+                        <h4>{{ text.subject | raw }}</h4>
+                        {{ text.content | raw }}
+                    {% elseif text.style == 'right' %}
+                        <a href="{{ asset('attachments/'~text.file) }}">
+                            <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-right fancybox">
+                        </a>
+                        <h4>{{ text.subject | raw }}</h4>
+                        {{ text.content | raw }}
+                    {% elseif text.style == 'center' %}
+
+                        <a {% if text.link %}href="{{ text.link }}"{% endif %}>
+                            <div class="featured-box-2">
+                                <img style="width: 170px;height: 100px;" src="{{ asset('attachments/'~text.file) }}">
+                                <h4>{{ text.subject | raw }}</h4>
+                                {{ text.content | raw }}
+                            </div>
+                        </a>
+                    {% elseif text.style == 'top' %}
+                        <a>
+                            <img src="{{ asset('attachments/'~text.file) | imagine_filter('big_banner') }}" alt="Image" class="image-center fancybox">
+                        </a>
+                        <h4>{{ text.subject | raw }}</h4>
+                        <hr/>
+                        {{ text.content | raw }}
+
+                    {% elseif text.style == 'highlight' %}
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="full-width-container light text-center">
+            <div class="container">
+                <div class="row">
+
+                    <h2>{{ text.subject | raw }}</h2>
+                    {{ text.content | raw }}
+                    <a href="{{ text.link }}" target="_blank" class="button">详细</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="main-wrapper">
+            <div class="container">
+                <div class="row">
+
+                    {% endif %}
+                </div>
+
+                {% endfor %}
+                {% endfor %}
+            </div>
+

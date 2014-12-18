@@ -15,16 +15,16 @@ class TextType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject')
-            ->add('lTitle')
-            ->add('lContent')
-            ->add('rTitle')
-            ->add('rContent')
-            ->add('link')
-            ->add('sort')
+            ->add('subject' , null , ['label' => '大标题'])
+            ->add('content' , null , ['label' => '简介'])
+            ->add('lTitle' , null , ['label' => '左栏标题'])
+            ->add('lContent' , null , ['label' => '左栏内容'])
+            ->add('rTitle' , null , ['label' => '右栏标题'])
+            ->add('rContent' , null , ['label' => '右栏内容'])
+            ->add('link' , null , ['label' => '链接'])
         ;
 
-        $builder->add('save' , 'submit');
+        $builder->add('save' , 'submit' , ['label' => '确定']);
     }
 
     /**

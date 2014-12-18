@@ -15,13 +15,13 @@ class SmalltextType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject')
-            ->add('content')
-            ->add('sort')
-            ->add('link')
+            ->add('subject' , null , ['label' => '标题'])
+            ->add('content' , null , ['label' => '内容'])
+            ->add('sort' , null , ['label' => '序号'])
+            ->add('link' , null , ['label' => '链接'])
         ;
 
-        $builder->add('save' , 'submit');
+        $builder->add('save' , 'submit' , ['label' => '确定']);
     }
 
     /**

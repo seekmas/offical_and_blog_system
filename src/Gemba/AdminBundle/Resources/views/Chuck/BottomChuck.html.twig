@@ -1,0 +1,15 @@
+<div id="footer">
+    <div class="container">
+        <div class="row">
+
+            {% for block in blocks %}
+            <div class="one-third column">
+                <h4>{{ block.subject }}</h4>
+
+                <p>{{ block.content | raw }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

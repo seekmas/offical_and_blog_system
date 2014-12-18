@@ -7,8 +7,8 @@
 <head>
     <title>{% block title %}擀霸咨询{% endblock %}</title>
     <meta charset="utf-8">
-    <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
+    <meta name="description" content="{% block description %}{% endblock %}">
 
     <!-- Mobile Specific Metas
     ================================================== -->
@@ -30,7 +30,10 @@
     <link rel="apple-touch-icon" href="{{ asset('template/apple-touch-icon.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('template/apple-touch-icon-72x72.png') }}">
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('template/apple-touch-icon-114x114.png') }}">
-
+    <!-- Chang URLs to wherever Video.js files will be hosted -->
+    <link href="{{ asset('video-js/video-js.css') }}" rel="stylesheet" type="text/css">
+    <!-- video.js must be in the <head> for older IEs to work. -->
+    <script src="{{ asset('video-js/video.js') }}"></script>
     <!-- Javascripts
     ================================================== -->
     <script src="{{ asset('template/lib/js/jquery.min.js') }}"></script>
@@ -82,18 +85,13 @@
     </div>
     <hr>
     <!-- Logo and search bar-->
-    <div class="container hMiddle">
+    <div class="container">
         <div class="row">
             <div class="twelve columns">
-                <div id="logo">
-                    <a href="/"><img style="width: 150px;" src="{{ asset('logo_gemba.png') }}" alt="Adeodatus"></a>
-                </div>
+                {{ chuck('logo_chuck') }}
             </div>
             <div class="four columns">
-                <form class="hSearchbox">
-                    <input type="text" placeholder="搜索案例" class="hSearchInput"/>
-                    <input type="submit" value="Send" class="hSearchSubmit"/>
-                </form>
+
             </div>
         </div>
     </div>
@@ -128,42 +126,14 @@
     </div>
 
 <!-- Footer -->
-<div id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="one-third column">
-                <h4>Adeodatus.</h4>
 
-            </div>
-            <div class="one-third column">
-                <h4>Latest from Twitter.</h4>
-
-            </div>
-            <div class="one-third column">
-                <h4>Flickr Feed.</h4>
-
-            </div>
-        </div>
-    </div>
-</div>
+    {{ chuck('bottom_chuck') }}
 
 <!-- Copyright -->
 <div id="copyright">
     <div class="container">
         <div class="row">
-            <div class="eight columns copy-info">
-                <p>&copy; 2014 擀霸中国. 版权所有.</p>
-            </div>
-            <div class="eight columns copy-social">
-                <ul class="social-icons">
-                    <li class="vimeo"><a href="#"></a></li>
-                    <li class="twitter"><a href="#"></a></li>
-                    <li class="facebook"><a href="#"></a></li>
-                    <li class="pinterest"><a href="#"></a></li>
-                    <li class="dribbble"><a href="#"></a></li>
-                    <li class="behance"><a href="#"></a></li>
-                </ul>
-            </div>
+            {{ chuck('copyright_chuck') }}
         </div>
     </div>
 </div>

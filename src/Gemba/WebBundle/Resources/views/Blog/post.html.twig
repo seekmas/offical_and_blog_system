@@ -135,12 +135,14 @@
         <div class="four columns widget alpha">
             <h4 class="widget-title">最新博客</h4>
             <ul class="latest-posts">
-
                 <!-- Post -->
                 {% for p in latest %}
                     <li>
-                        <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.user.userinfo.file) }}" alt="Post">
-                        <div class="meta">
+                        {% if p.file %}
+                            <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.file) | imagine_filter('thumbnail') }}" alt="Post">
+                        {% else %}
+                            <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.user.userinfo.file) | imagine_filter('thumbnail') }}" alt="Post">
+                        {% endif %}                        <div class="meta">
                             <h4><a href="{{ path('post' , {'id': p.id}) }}">{{ p.subject }}</a></h4>
                             <small>{{ p.createdAt | date('Y年m月d日') }}</small>
                         </div>

@@ -37,16 +37,6 @@ services:
         class: Gemba\AdminBundle\Decorator\Repository
         arguments: [@layout_repository]
 
-    text_repository:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: doctrine
-        factory_method: getRepository
-        arguments: [ Gemba\AdminBundle\Entity\Text ]
-
-    text:
-        class: Gemba\AdminBundle\Decorator\Repository
-        arguments: [@text_repository]
-
     smalltext_repository:
         class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: doctrine
@@ -77,6 +67,68 @@ services:
         class: Gemba\AdminBundle\Decorator\Repository
         arguments: [@comment_repository]
 
+    slider_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Slider ]
+
+    slider:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@slider_repository]
+
+    bottom_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Bottom ]
+
+    bottom:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@bottom_repository]
+
+    copyright_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Copyright ]
+
+    copyright:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@copyright_repository]
+
+    logo_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Logo ]
+
+    logo:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@logo_repository]
+
+    seo_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Seo ]
+
+    seo:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@seo_repository]
+
     menu_chuck:
         class: Gemba\AdminBundle\Chuck\MenuChuck
+        arguments: [@service_container]
+
+    bottom_chuck:
+        class: Gemba\AdminBundle\Chuck\BottomChuck
+        arguments: [@service_container]
+
+    copyright_chuck:
+        class: Gemba\AdminBundle\Chuck\CopyrightChuck
+        arguments: [@service_container]
+
+    logo_chuck:
+        class: Gemba\AdminBundle\Chuck\LogoChuck
         arguments: [@service_container]

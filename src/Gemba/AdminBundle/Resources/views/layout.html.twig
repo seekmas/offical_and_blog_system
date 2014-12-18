@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="/template/lib/css/green.css" type="text/css" media="all">
     <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('dist/css/makoto.css') }}" rel="stylesheet">
+
+    <!-- Chang URLs to wherever Video.js files will be hosted -->
+    <link href="{{ asset('video-js/video-js.css') }}" rel="stylesheet" type="text/css">
+    <!-- video.js must be in the <head> for older IEs to work. -->
+    <script src="{{ asset('video-js/video.js') }}"></script>
+
     <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>

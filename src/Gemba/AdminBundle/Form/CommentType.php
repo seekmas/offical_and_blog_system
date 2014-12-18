@@ -15,13 +15,13 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('email')
-            ->add('job')
-            ->add('comment')
+            ->add('name' , null , ['label' => '名字'])
+            ->add('email' , null , ['label' => 'Email'])
+            ->add('job' , null , ['label' => '工作'])
+            ->add('comment', null , ['label' => '评论'])
         ;
 
-        $builder->add('save' , 'submit');
+        $builder->add('save' , 'submit' , ['label' => '确定']);
     }
     
     /**

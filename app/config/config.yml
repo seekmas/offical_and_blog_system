@@ -111,8 +111,25 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [540, 150], mode: outbound }
-
+        big_banner:
+            quality: 100
+            filters:
+                thumbnail: { size: [970, 300], mode: outbound }
+        big_slider:
+            quality: 100
+            filters:
+                thumbnail: { size: [970, 280], mode: outbound }
         poster:
             quality: 100
             filters:
                 thumbnail: { size: [200 , 180], mode: outbound }
+
+        _thumbnail:
+            quality: 100
+            filters:
+                thumbnail: { size: [100 , 80], mode: inset }
+
+        thumbnail:
+            quality: 100
+            filters:
+                thumbnail: { size: [60 , 60], mode: inset }

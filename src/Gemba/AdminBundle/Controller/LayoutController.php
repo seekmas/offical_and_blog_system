@@ -48,6 +48,41 @@ class LayoutController extends Controller
     }
 
     /**
+     * @Route("/{id}/update" , name="layout_update")
+     * @Template()
+     */
+    public function updateAction(Request $request , $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $dispatcher = $this->get('event_dispatcher');
+
+        $blocks = $this->get('block')->findAllOrderBy('sort', 'asc');
+
+        $layout = $this->get('layout')->find($id);
+        $type = $this->get('type_factory')->create('layout');
+        $form = $this->createForm($type , $layout);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $event = new FormEvent($form , $layout);
+            $dispatcher->dispatch(FormEvents::POST_SUBMIT , $event);
+
+            $em->persist($layout);
+            $em->flush();
+
+            $this->addFlash('success' , '布局添加成功');
+            return $this->redirectToRoute('layout_home');
+        }
+
+
+        return [
+            'form' => $form->createView() ,
+            'blocks' => $blocks
+        ];
+    }
+    /**
      * @Route("/{id}/edit" , name="layout_edit")
      * @Template()
      */

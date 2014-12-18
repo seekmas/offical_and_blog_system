@@ -81,7 +81,13 @@
                         {% for p in latest %}
                         <!-- Post -->
                         <li>
-                            <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.user.userinfo.file) }}" alt="Post">
+
+                            {% if p.file %}
+                                <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.file) | imagine_filter('thumbnail') }}" alt="Post">
+                            {% else %}
+                                <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ p.user.userinfo.file) | imagine_filter('thumbnail') }}" alt="Post">
+                            {% endif %}
+
                             <div class="meta">
                                 <h4><a href="{{ path('post' , {'id': p.id}) }}">{{ p.subject }}</a></h4>
                                 <small>{{ p.createdAt | date('Y年m月d日') }}</small>

@@ -31,6 +31,12 @@ class BlockController extends Controller
 
         if($form->isValid())
         {
+            if(count($blocks) >= 8)
+            {
+                $this->addFlash('danger' , '已经不能添加模块了');
+                return $this->redirectToRoute('block_home');
+            }
+
             $event = new FormEvent($form , $block);
             $dispatcher->dispatch(FormEvents::POST_SUBMIT , $event);
 

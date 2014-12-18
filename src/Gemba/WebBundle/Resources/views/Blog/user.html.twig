@@ -31,7 +31,7 @@
             <div class="row">
             {% if blog.file %}
             <div class="two columns">
-                <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ blog.file) }}" style="width: 120px;" />
+                <img class="image-polaroid image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ blog.file) | imagine_filter('_thumbnail') }}" style="width: 120px;" />
             </div>
             <div class="twelve columns">
                 {{ blog.content | striptags | truncate(200) }}

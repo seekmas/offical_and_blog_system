@@ -1,0 +1,34 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>编辑Bottom</h3>
+            </div>
+            {{ form(form) }}
+        </div>
+
+        <div class="col-md-6">
+            {% for bottom in bottoms %}
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h3>{{ bottom.subject }}
+                            <small>
+
+                                <a href="{{ path('bottom_edit' , {'id': bottom.id}) }}">编辑</a>
+                                <a href="">删除</a>
+
+                            </small>
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="col-md-12">{{ bottom.content | raw }}</div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+{% endblock %}
