@@ -46,7 +46,7 @@
 
                 {% endif %}
 
-                <h3>{{ post.subject }}</h3>
+                <h1>{{ post.subject }}</h1>
 
                 <blockquote>
                     <p>{{ post.keywords }}</p>
@@ -59,15 +59,15 @@
                 <div class="four columns widget alpha">
                     <h4 class="widget-title">关于作者</h4>
                     <ul>
-                        <li><strong>作者</strong>: {{ post.user.userinfo.name }}</li>
+                        <li><strong>作者</strong>: {{ post.user.userinfo.name | raw }}</li>
 
-                        <li><strong>Email</strong>: {{ post.user.userinfo.email }}</li>
+                        <li><strong>Email</strong>: {{ post.user.userinfo.email | raw }}</li>
 
-                        <li><strong>工作经历</strong>: {{ post.user.userinfo.experience }}</li>
+                        <li><strong>工作经历</strong>: {{ post.user.userinfo.experience | raw }}</li>
 
-                        <li><strong>特长技能</strong>: {{ post.user.userinfo.skillList }}</li>
+                        <li><strong>特长技能</strong>: {{ post.user.userinfo.skillList | raw }}</li>
 
-                        <li><strong>介绍</strong>: <small>{{ post.user.userinfo.description }}</small></li>
+                        <li><strong>介绍</strong>: <small>{{ post.user.userinfo.description | raw }}</small></li>
 
                     </ul>
                 </div>
