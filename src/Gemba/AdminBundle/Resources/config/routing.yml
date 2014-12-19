@@ -17,3 +17,8 @@ layout_controller:
      resource: "@GembaAdminBundle/Controller/LayoutController.php"
      type: annotation
      prefix: /layout
+
+feed_controller:
+     resource: "@GembaAdminBundle/Controller/FeedController.php"
+     type: annotation
+     prefix: /feed

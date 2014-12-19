@@ -17,3 +17,8 @@ upload_controller:
      resource: "@GembaWebBundle/Controller/UploadController.php"
      type: annotation
      prefix: /upload
+
+feed_controller:
+     resource: "@GembaWebBundle/Controller/FeedController.php"
+     type: annotation
+     prefix: /feed

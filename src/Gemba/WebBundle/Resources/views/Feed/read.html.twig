@@ -1,0 +1,99 @@
+{% extends "GembaWebBundle::layout.html.twig" %}
+
+{% block title %}擀霸企业管理咨询(上海)有限公司 {% endblock %}
+
+{% block keywords %}{% if seo is defined %}{{ seo.keywords | striptags }}{% endif %}{% endblock %}
+{% block description %}{% if seo is defined %}{{ seo.description | striptags }}{% endif %}{% endblock %}
+
+{% block nav %}
+
+    <div class="container">
+        <div class="sixteen columns">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="sixteen columns">
+            <div class="underline-heading">
+                <h3><a href="{{ path('feed_read' , {'id': feed.id}) }}">{{ feed }}</a></h3>
+            </div>
+            <p>发布于 {{ feed.createdAt | date('Y-m-d') }}</p>
+
+            <img src="{{ asset('attachments/'~feed.file) }}" />
+
+            {{ feed.content | raw }}
+
+            <div class="btn-group">
+                <a href="{{ path('feed_read' , {'id': feed.id}) }}#comments" class="button green small">评论 {{ feed.comment | length }}</a>
+                <a href="{{ path('feed_read' , {'id': feed.id}) }}" class="button blue small">点击 {{ feed.click }}</a>
+            </div>
+            <hr/>
+        </div>
+
+        <div id="comments" class="twelve columns alpha">
+            <div class="underline-heading">
+                <h4><strong>评论</strong> {{ feed.comment | length }}</h4>
+            </div>
+            <ol class="comment-list">
+
+                {% for comment in feed.comment %}
+                <li>
+                    <div class="comment-area">
+                        <div class="comment-avatar"><img src="/anonymous-question-avatar.png" alt="Avatar"></div>
+                        <div class="comment-description">
+                            <div class="comment-by">
+                                <strong>{{ comment.name }}</strong>
+                                <span class="published">{{ comment.createdAt | date('Y年m月d日') }}</span>
+                            </div>
+                            <p>{{ comment.comment | striptags }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="sixteen columns">
+            {{ form_start(form) }}
+
+            <div class="underline-heading">
+                <h4><strong>发表评论</strong></h4>
+            </div>
+            <div id="respond-input">
+                <div>
+                    <label>{{ form_label(form.name) }}</label>
+                    {{ form_widget(form.name) }}
+                </div>
+                <div>
+                    <label>{{ form_label(form.email) }}</label>
+                    {{ form_widget(form.email) }}
+                </div>
+                <div>
+                    <label>{{ form_label(form.job) }}</label>
+                    {{ form_widget(form.job) }}
+                </div>
+            </div>
+            <div id="respond-textarea">
+                <div>
+                    <label>{{ form_label(form.comment) }}</label>
+                    {{ form_widget(form.comment) }}
+                </div>
+            </div>
+            <div id="respond-submit">
+                {{ form_widget(form.save , {'attr': {'class': 'button'}}) }}
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+
+
+
+
+</div>
+{% endblock %}

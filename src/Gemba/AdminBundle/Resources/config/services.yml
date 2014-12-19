@@ -117,8 +117,32 @@ services:
         class: Gemba\AdminBundle\Decorator\Repository
         arguments: [@seo_repository]
 
+    news_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\News ]
+
+    news:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@news_repository]
+
+    top_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Gemba\AdminBundle\Entity\Top ]
+
+    top:
+        class: Gemba\AdminBundle\Decorator\Repository
+        arguments: [@top_repository]
+
     menu_chuck:
         class: Gemba\AdminBundle\Chuck\MenuChuck
+        arguments: [@service_container]
+
+    top_chuck:
+        class: Gemba\AdminBundle\Chuck\TopChuck
         arguments: [@service_container]
 
     bottom_chuck:

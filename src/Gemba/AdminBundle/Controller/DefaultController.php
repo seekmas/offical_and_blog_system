@@ -21,6 +21,22 @@ class DefaultController extends Controller
         $dispatcher = $this->get('event_dispatcher');
         $block = $this->get('block')->findOneBy(['aliasForUrl' => '/']);
 
+        $top = $this->get('top')->find(1) ? $this->get('top')->find(1) : $this->get('entity_factory')->create('top');
+        $top_type = $this->get('type_factory')->create('top');
+        $top_form = $this->createForm($top_type , $top);
+        $top_form->handleRequest($request);
+        if($top_form->isValid())
+        {
+            $event = new FormEvent($top_form , $top);
+            $dispatcher->dispatch(FormEvents::POST_SUBMIT , $event);
+
+            $em->persist($top);
+            $em->flush();
+
+            $this->addFlash('success' , '更新Top内容成功');
+            return $this->redirectToRoute('admin_home');
+        }
+
 
         $seo = $this->get('seo')->find(1) ? $this->get('seo')->find(1) : $this->get('entity_factory')->create('seo');
         $seo_type = $this->get('type_factory')->create('seo');
@@ -112,6 +128,7 @@ class DefaultController extends Controller
             'block' => $block,
             'logo' => $logo ,
             'layouts' => $block->getLayout(),
+            'top_form' => $top_form->createView() ,
             'seo_form' => $seo_form->createView() ,
             'copyright_form' => $copyright_form->createView() ,
             'logo_form' => $logo_form->createView() ,

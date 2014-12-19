@@ -1,0 +1,65 @@
+{% extends "GembaAdminBundle::layout.html.twig" %}
+
+{% block body %}
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">编辑器</a></li>
+        <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">新闻</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="row">
+            <div class="col-md-12">
+                <br/>
+                {{ form(form) }}
+            </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+
+
+            {% for feed in list %}
+            <div class="col-md-12">
+                <div class="underline-heading">
+                    <h3>
+                        <small><span class="label label-success">{{ feed.category }}</span> .</small>
+                        <a href="{{ path('news_edit' , {'id': feed.id}) }}">{{ feed }}</a>
+
+                    </h3>
+                </div>
+                <p>发布于 {{ feed.createdAt | date('Y-m-d') }}</p>
+
+                {% if feed.file %}
+
+                    <div class="col-md-3"><img src="{{ asset('attachments/'~feed.file) }}" /></div>
+
+                    <div class="col-md-9">{{ feed.content | striptags | truncate(80) }}</div>
+
+                {% else %}
+
+                    <div class="col-md-12">{{ feed.content | striptags | truncate(80) }}</div>
+
+                {% endif %}
+
+
+
+                <br/>
+                <div class="btn-group">
+                    <a href="#" class="button green small">评论 {{ feed.comment | length }}</a>
+                    <a href="#" class="button blue small">点击 {{ feed.click }}</a>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            {{ knp_pagination_render(list) }}
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
