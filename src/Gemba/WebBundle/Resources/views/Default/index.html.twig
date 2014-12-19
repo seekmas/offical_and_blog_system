@@ -46,19 +46,21 @@
             <div class="row">
                 <div class="sixteen columns">
                     <div class="underline-heading">
-                        <h4 class="">热门博客</h4>
+                        <h4 class=""><a href="{{ path('blog_home') }}">热门博客</a></h4>
                     </div>
                     <p>一些点击量最高的热门的博客</p>
                 </div>
-                <!-- Carousel -->
+
                 <div style="overflow: visible;" class="carousel touchcarousel grey-blue">
                     <div style="cursor: grab;" class="touchcarousel-wrapper"><div style="width: 1440px; left: 0px;" class="touchcarousel-container">
                             {% for blog in blogs %}
                                 <!-- Item -->
                                 <div class="four columns touchcarousel-item">
-                                    <img src="{{ asset('attachments/' ~ blog.file) | imagine_filter('poster') }}" alt="Post" class="image-polaroid">
-                                    <h4><a href="{{ path('post' , {'id': blog.id}) }}">{{ blog.subject }}</a></h4>
-                                    <p>{{ blog.content | striptags | truncate(50) }}</p>
+                                    <a href="{{ path('post' , {'id': blog.id}) }}">
+                                        <img src="{{ asset('attachments/' ~ blog.file) | imagine_filter('poster') }}" alt="Post" class="image-polaroid">
+                                        <h4>{{ blog.subject }}</h4>
+                                        <p>{{ blog.content | striptags | truncate(50) }}</p>
+                                    </a>
                                 </div>
                             {% endfor %}
 
