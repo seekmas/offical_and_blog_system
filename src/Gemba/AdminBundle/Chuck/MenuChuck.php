@@ -14,7 +14,13 @@ class MenuChuck extends Chuck
     public function getParameters()
     {
 
-        $blocks = $this->get('block')->findAllOrderBy('sort' , 'asc');
+        $blocks = $this->get('block')
+            ->createQueryBuilder('block')
+            ->select('block')
+            ->where('block.parentId is NULL')
+            ->orderBy('block.sort' , 'asc')
+            ->getQuery()
+            ->getResult();
 
         return [ 'blocks' => $blocks ];
     }

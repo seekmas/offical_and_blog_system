@@ -1671,6 +1671,7 @@ body.pat12 {
 	margin: 0px;
 	width: 200px;
 	background-color: #fff;
+    border: 1px solid #eeeeee;
 }
 #menu ul a {
 	color: #41454a;

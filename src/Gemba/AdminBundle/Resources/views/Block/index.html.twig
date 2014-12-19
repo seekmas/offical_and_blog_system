@@ -19,22 +19,29 @@
 
 <div class="col-md-6">
 <div class="panel panel-default">
-    <div class="panel-heading">添加新模块</div>
+    <div class="panel-heading">管理模块</div>
 
     <div class="panel-body">
-        <div class="list-group">
+
         {% for key , block in blocks %}
-            <a href="{{ path('sub_block_home' , {'id': block.id}) }}" class="list-group-item">
+            <p>
+                <a href="{{ path('sub_block_home' , {'id': block.id}) }}">
+                        {{ block }}
+                        <span class="label label-success">{{ block.sort }}</span>
+                </a>
+            </p>
+            {% for sub in block.children %}
+            <p>
+                <a href="{{ path('add_sub_block_home' , {'id': block.id , 'sub_id': sub.id}) }}">
+                   ---
+                    {{ sub.subject }}
+                    <span class="label label-success">{{ sub.sort }}</span>
+                </a>
+            </p>
+            {% endfor %}
 
-            {{ key+1 }}. {{ block }}
-
-            - {{ block.description | striptags }}
-
-            <span class="label label-success">{{ block.sort }}</span>
-
-            </a>
         {% endfor %}
-        </div>
+
     </div>
 </div>
 </div>

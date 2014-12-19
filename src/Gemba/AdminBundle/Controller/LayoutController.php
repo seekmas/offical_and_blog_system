@@ -21,7 +21,13 @@ class LayoutController extends Controller
         $em = $this->getDoctrine()->getManager();
         $dispatcher = $this->get('event_dispatcher');
 
-        $blocks = $this->get('block')->findAllOrderBy('sort', 'asc');
+        $blocks = $this->get('block')
+            ->createQueryBuilder('block')
+            ->select('block')
+            ->where('block.parentId is NULL')
+            ->orderBy('block.sort' , 'asc')
+            ->getQuery()
+            ->getResult();
 
         $layout = $this->get('entity_factory')->create('layout');
         $type = $this->get('type_factory')->create('layout');

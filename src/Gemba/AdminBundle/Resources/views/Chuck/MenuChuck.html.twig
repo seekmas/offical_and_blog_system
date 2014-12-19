@@ -5,13 +5,19 @@
         <li><a href="/">网站首页</a></li>
         <li><a href="{{ path('feed_home') }}">新闻资讯</a></li>
         {% for block in blocks %}
-
             {% if block.aliasForUrl != '/' %}
+                <li><a href="{{ path('block_show' , {'alias': block.aliasForUrl}) }}">{{ block }}</a>
 
-                <li><a href="{{ path('block_show' , {'alias': block.aliasForUrl}) }}">{{ block }}</a></li>
+                    {% if block.children | length %}
+                    <ul>
+                        {% for sub in block.children %}
+                            <li><a href="{{ path('block_show' , {'alias': sub.aliasForUrl}) }}">{{ sub }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
 
+                </li>
             {% endif %}
-
         {% endfor %}
         <li><a href="{{ path('blog_home') }}">顾问博客</a></li>
     </ul>

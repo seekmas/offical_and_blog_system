@@ -22,6 +22,22 @@ class Block
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Block", mappedBy="parent")
+     **/
+    private $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Block", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     **/
+    private $parent;
+
+    /**
+     * @ORM\Column(name="parent_id", type="integer" , nullable=true)
+     **/
+    private $parentId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=255)
@@ -108,6 +124,60 @@ class Block
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @return Block
+     * @param mixed $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @return Block
+     * @param mixed $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    /**
+     * @return Block
+     * @param mixed $parentId
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+        return $this;
     }
 
     /**

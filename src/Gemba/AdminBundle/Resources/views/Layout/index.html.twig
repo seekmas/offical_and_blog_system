@@ -22,15 +22,20 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">管理</div>
-
                     <div class="panel-body">
-
                         {% for block in blocks %}
                             <p>
-                                <a class="btn" href="{{ path('layout_edit' , {'id': block.id}) }}">
+                                <a href="{{ path('layout_edit' , {'id': block.id}) }}">
                                     {{ block }} <span class="label label-success">{{ block.layout | length }}</span>
                                 </a>
                             </p>
+                            {% for sub in block.children %}
+                                <p>
+                                    <a href="{{ path('layout_edit' , {'id': sub.id}) }}">
+                                        -- {{ sub }} <span class="label label-success">{{ sub.layout | length }}</span>
+                                    </a>
+                                </p>
+                            {% endfor %}
                         {% endfor %}
 
                     </div>
