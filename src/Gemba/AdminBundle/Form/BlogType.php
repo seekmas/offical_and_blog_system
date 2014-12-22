@@ -15,7 +15,7 @@ class BlogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file' , 'file' , ['label' => '博客封面'])
+            ->add('file' , 'file' , ['label' => '博客封面' , 'required' => false])
             ->add('subject' , null , ['label' => '博客标题'])
             ->add('content' , null , ['label' => '博客正文'])
             ->add('keywords' , null , ['label' => '关键字(用 , 隔开)'])
