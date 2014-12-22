@@ -43,6 +43,27 @@
 
             {% include "GembaWebBundle::block_row.html.twig" %}
 
+
+            <div class="sixteen columns">
+                <div class="underline-heading">
+                    <h4 class=""><a href="{{ path('feed_home') }}">新闻资讯</a></h4>
+                </div>
+            </div>
+
+            {% for feed in feeds %}
+                <div class="four columns">
+                    <div class="underline-heading">
+                        <h5 class=""><a href="{{ path('feed_read', {'id': feed.id}) }}">{{ feed }}</a></h5>
+                    </div>
+
+                    {% if feed.file %}<img src="{{ asset('attachments/'~feed.file)  | imagine_filter('poster') }}">{% endif %}
+
+                    <p>{{ feed.content | striptags | truncate(100) }}</p>
+                </div>
+
+            {% endfor %}
+
+
             <div class="row">
                 <div class="sixteen columns">
                     <div class="underline-heading">

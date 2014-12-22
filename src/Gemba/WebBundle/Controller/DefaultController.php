@@ -19,12 +19,14 @@ class DefaultController extends Controller
 
         $seo = $this->get('seo')->find(1);
 
+        $feeds = $this->get('news')->setLimit(4)->findAllOrderBy('id' , 'desc');
 
         $sliders = $this->get('slider')->findAll();
 
         return [
             'block' => $block,
             'blogs' => $blogs ,
+            'feeds' => $feeds ,
             'layouts' => $block->getLayout() ,
             'sliders' => $sliders ,
             'seo' => $seo ,
