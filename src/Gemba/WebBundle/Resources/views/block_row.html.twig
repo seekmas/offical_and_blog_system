@@ -4,7 +4,7 @@
 
     <div class="sixteen columns">
         <div class="underline-heading">
-            <h4 class="">{{ layout.subject }}</h4>
+            <h3 class="">{{ layout.subject }}</h3>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
 
                     {% if text.style == 'text' %}
                         {% if text.link %}
-                            <h1><a href="{{ text.link }}">{{ text.subject | raw }}</a></h1>
+                            <h4><a href="{{ text.link }}">{{ text.subject | raw }}</a></h4>
                         {% else %}
                             <h1>{{ text.subject | raw }}</h1>
                         {% endif %}
@@ -39,16 +39,16 @@
                     {% elseif text.style == 'smalltext' %}
                         <div class="underline-heading">
                             {% if text.link %}
-                                <h3><a href="{{ text.link }}">{{ text.subject | raw }}</a></h3>
+                                <h4><a href="{{ text.link }}">{{ text.subject | raw }}</a></h4>
                             {% else %}
-                                <h3>{{ text.subject | raw }}</h3>
+                                <h4>{{ text.subject | raw }}</h4>
                             {% endif %}
 
                         </div>
                         {{ text.content | raw }}
                     {% elseif text.style == 'video' %}
                             <div class="underline-heading">
-                                <h3>{{ text.subject }}</h3>
+                                <h4>{{ text.subject }}</h4>
                             </div>
                             <div style="margin-bottom: 20px;">
                                 <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="{{ text.lTitle }}px" height="{{ text.rTitle }}px"

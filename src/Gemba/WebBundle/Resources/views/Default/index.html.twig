@@ -44,30 +44,35 @@
             {% include "GembaWebBundle::block_row.html.twig" %}
 
 
-            <div class="sixteen columns">
-                <div class="underline-heading">
-                    <h4 class=""><a href="{{ path('feed_home') }}">新闻资讯</a></h4>
-                </div>
-            </div>
-
-            {% for feed in feeds %}
-                <div class="four columns">
+            <div class="row">
+                <div class="sixteen columns">
                     <div class="underline-heading">
-                        <h5 class=""><a href="{{ path('feed_read', {'id': feed.id}) }}">{{ feed }}</a></h5>
+                        <h3 class=""><a href="{{ path('feed_home') }}">新闻资讯</a></h3>
                     </div>
-
-                    {% if feed.file %}<img src="{{ asset('attachments/'~feed.file)  | imagine_filter('poster') }}">{% endif %}
-
-                    <p>{{ feed.content | striptags | truncate(100) }}</p>
                 </div>
 
-            {% endfor %}
+                <div style="overflow: visible;" class="carousel touchcarousel grey-blue">
+                    <div style="cursor: grab;" class="touchcarousel-wrapper"><div style="width: 1440px; left: 0px;" class="touchcarousel-container">
+                            {% for feed in feeds %}
+                                <!-- Item -->
+                                <div class="four columns touchcarousel-item">
+                                    <a href="{{ path('feed_read', {'id': feed.id}) }}">
+                                        {% if feed.file %}<img src="{{ asset('attachments/'~feed.file)  | imagine_filter('poster') }}">{% endif %}
+                                        <h4>{{ feed }}</h4>
+                                        <p>{{ feed.content | striptags | truncate(100) }}</p>
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                        </div></div>
+                    <div class="scrollbar-holder"><div style="width: 632px; left: 0px;" class="scrollbar dark"></div></div></div>
+            </div>
 
 
             <div class="row">
                 <div class="sixteen columns">
                     <div class="underline-heading">
-                        <h4 class=""><a href="{{ path('blog_home') }}">热门博客</a></h4>
+                        <h3 class=""><a href="{{ path('blog_home') }}">热门博客</a></h3>
                     </div>
                     <p>一些点击量最高的热门的博客</p>
                 </div>
@@ -81,10 +86,10 @@
                                         <img src="{{ asset('attachments/' ~ blog.file) | imagine_filter('poster') }}" alt="Post" class="image-polaroid">
                                         <h4>{{ blog.subject }}</h4>
                                         <p>{{ blog.content | striptags | truncate(50) }}</p>
+                                        <p>点击: {{ blog.click }} 评论: {{ blog.comment | length }}</p>
                                     </a>
                                 </div>
                             {% endfor %}
-
                         </div></div>
                     <div class="scrollbar-holder"><div style="width: 632px; left: 0px;" class="scrollbar dark"></div></div></div>
             </div>
