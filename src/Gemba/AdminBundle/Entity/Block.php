@@ -113,6 +113,7 @@ class Block
 
     /**
      * @ORM\OneToMany(targetEntity="Layout" , mappedBy="block")
+     * @ORM\OrderBy({"sort" = "ASC"})
      */
     private $layout;
 
