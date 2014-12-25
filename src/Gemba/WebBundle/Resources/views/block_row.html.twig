@@ -68,7 +68,7 @@
                         <a href="{{ asset('attachments/'~text.file) }}">
                             <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-right fancybox">
                         </a>
-                        <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</h4>
+                        <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</a></h4>
                         {{ text.content | raw }}
                     {% elseif text.style == 'center' %}
 
