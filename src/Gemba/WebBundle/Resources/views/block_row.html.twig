@@ -62,28 +62,29 @@
                         <a href="{{ asset('attachments/'~text.file) }}">
                             <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-left fancybox">
                         </a>
-                        <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</h4>
+                        <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</a></h4>
                         {{ text.content | raw }}
                     {% elseif text.style == 'right' %}
                         <a href="{{ asset('attachments/'~text.file) }}">
                             <img src="{{ asset('attachments/'~text.file) }}" alt="Image" class="image-right fancybox">
                         </a>
                         <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</a></h4>
+
                         {{ text.content | raw }}
                     {% elseif text.style == 'center' %}
 
-                        <a {% if text.link %}href="{{ text.link }}"{% endif %}>
+
                             <div class="featured-box-2">
                                 <img style="width: 170px;height: 100px;" src="{{ asset('attachments/'~text.file) }}">
-                                <h4>{{ text.subject | raw }}</h4>
+                                <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</a></h4>
                                 {{ text.content | raw }}
                             </div>
-                        </a>
+
                     {% elseif text.style == 'top' %}
                         <a {% if text.link %}href="{{ text.link }}"{% endif %}>
                             <img src="{{ asset('attachments/'~text.file) | imagine_filter('big_banner') }}" alt="Image" class="image-center fancybox">
                         </a>
-                        <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</h4>
+                        <h4><a {% if text.link %}href="{{ text.link }}"{% endif %}>{{ text.subject | raw }}</a></h4>
                         <hr/>
                         {{ text.content | raw }}
 
