@@ -2,11 +2,13 @@
 
     {% for layout in layouts if layout.smalltext | length %}
 
-    <div class="sixteen columns">
-        <div class="underline-heading">
-            <h3 class="">{{ layout.subject }}</h3>
+        {% if layout.subject | trim %}
+        <div class="sixteen columns">
+            <div class="underline-heading">
+                <h3 class="">{{ layout.subject }}</h3>
+            </div>
         </div>
-    </div>
+        {% endif %}
 
     {% for text in layout.smalltext %}
 
@@ -38,11 +40,12 @@
                         <div>
                     {% elseif text.style == 'smalltext' %}
                         <div class="underline-heading">
-                            {% if text.link %}
-                                <h4><a href="{{ text.link }}">{{ text.subject | raw }}</a></h4>
-                            {% else %}
-                                <h4>{{ text.subject | raw }}</h4>
-                            {% endif %}
+
+                                {% if text.link %}
+                                    <h4><a href="{{ text.link }}">{{ text.subject | raw }}</a></h4>
+                                {% else %}
+                                    <h4>{{ text.subject | raw }}</h4>
+                                {% endif %}
 
                         </div>
                         {{ text.content | raw }}
