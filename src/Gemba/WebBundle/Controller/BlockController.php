@@ -18,15 +18,15 @@ class BlockController extends Controller
 
         $block = $this->get('block')->findOneBy(['aliasForUrl' => $alias]);
 
-        $layouts = $this->get('layout')
-                        ->createQueryBuilder('layout')
-                        ->select('layout')
-                        ->where('layout.blockId = '.$block->getId())
-                        ->getQuery()
-                        ->getResult();
+//        $layouts = $this->get('layout')
+//                        ->createQueryBuilder('layout')
+//                        ->select('layout')
+//                        ->where('layout.blockId = '.$block->getId())
+//                        ->getQuery()
+//                        ->getResult();
         return [
             'block' => $block ,
-            'layouts' => $layouts
+            'layouts' => $block->getLayout()
         ];
     }
 }
