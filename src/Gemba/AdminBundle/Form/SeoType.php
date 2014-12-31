@@ -15,8 +15,8 @@ class SeoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('keywords' , null , ['label' => 'Keywords'])
-            ->add('description' , null , ['label' => 'Description'])
+            ->add('keywords' , 'text' , ['label' => 'Keywords'])
+            ->add('description' , 'text' , ['label' => 'Description'])
         ;
 
         $builder->add('save' , 'submit' , ['label' => '确定']);

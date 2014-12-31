@@ -15,7 +15,7 @@ class TopType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content')
+            ->add('content' , 'text')
         ;
 
         $builder->add('save' , 'submit' , ['label' => '确定']);
