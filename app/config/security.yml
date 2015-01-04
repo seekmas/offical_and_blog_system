@@ -24,3 +24,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/blog/write_blog, role: ROLE_USER }
+        - { path: ^/blog/\d+/update_blog, role: ROLE_USER }

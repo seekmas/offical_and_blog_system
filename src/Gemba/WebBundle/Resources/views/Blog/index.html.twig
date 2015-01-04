@@ -30,8 +30,9 @@
                     <!-- Blog post -->
                     <div class="twelve columns blog-post alpha">
                         <div class="post-meta">
+                            {% if blog.user.userinfo.file %}
                             <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ blog.user.userinfo.file) }}" style="width: 90px;"/>
-
+                            {% endif %}
                             <ul>
                                 <li>{{ blog.click }} 点击量</li>
                                 <li>{{ blog.comment | length }} 条评论</li>

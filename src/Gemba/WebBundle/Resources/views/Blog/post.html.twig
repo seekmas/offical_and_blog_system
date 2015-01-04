@@ -27,8 +27,10 @@
         <!-- Blog post -->
         <div class="twelve columns blog-post alpha">
             <div class="post-meta">
-                <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ post.user.userinfo.file) }}" style="width: 90px;"/>
 
+                {% if post.user.userinfo.file %}
+                <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ post.user.userinfo.file) }}" style="width: 90px;"/>
+                {% endif %}
                 <ul>
                     <li>{{ post.click }} 点击量</li>
                     <li>{{ post.comment | length }} 条评论</li>
