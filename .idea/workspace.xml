@@ -25,23 +25,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3147482" vertical-offset="305" max-vertical-offset="1995">
-              <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
+            <state vertical-scroll-proportion="-7.2916665" vertical-offset="305" max-vertical-offset="1995">
+              <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="83" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="post.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/post.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5" vertical-offset="150" max-vertical-offset="2475">
-              <caret line="30" column="49" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.40467626" vertical-offset="240" max-vertical-offset="2475">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
               <folding>
-                <element signature="e#1025#1045#0#HTML" expanded="true" />
+                <element signature="e#1029#1049#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,15 +116,15 @@
         <option value="$PROJECT_DIR$/src/Gemba/AdminBundle/Form/SeoType.php" />
         <option value="$PROJECT_DIR$/src/Gemba/AdminBundle/Form/TopType.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/post.html.twig" />
         <option value="$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/post.html.twig" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="123" />
-    <option name="y" value="82" />
+    <option name="x" value="190" />
+    <option name="y" value="347" />
     <option name="width" value="1237" />
     <option name="height" value="713" />
   </component>
@@ -412,7 +412,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="123" y="82" width="1237" height="713" extended-state="0" />
+    <frame x="190" y="347" width="1237" height="713" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -808,21 +808,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/post.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5" vertical-offset="150" max-vertical-offset="2475">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="49" />
-          <folding>
-            <element signature="e#1025#1045#0#HTML" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-7.2916665" vertical-offset="305" max-vertical-offset="1995">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gemba/WebBundle/Resources/views/Blog/post.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3147482" vertical-offset="305" max-vertical-offset="1995">
-          <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding />
+        <state vertical-scroll-proportion="0.40467626" vertical-offset="240" max-vertical-offset="2475">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="e#1029#1049#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

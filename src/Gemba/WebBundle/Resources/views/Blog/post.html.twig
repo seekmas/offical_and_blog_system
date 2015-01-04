@@ -28,8 +28,8 @@
         <div class="twelve columns blog-post alpha">
             <div class="post-meta">
 
-                {% if post.user.userinfo.file and blog.user.userinfo %}
-                <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ post.user.userinfo.file) }}" style="width: 90px;"/>
+                {% if blog.user.userinfo and blog.user.userinfo.file %}
+                    <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ post.user.userinfo.file) }}" style="width: 90px;"/>
                 {% endif %}
                 <ul>
                     <li>{{ post.click }} 点击量</li>
