@@ -28,7 +28,7 @@
         <div class="twelve columns blog-post alpha">
             <div class="post-meta">
 
-                {% if blog.user.userinfo and blog.user.userinfo.file %}
+                {% if post.user.userinfo and post.user.userinfo.file %}
                     <img class="image-circle image-size-with-grid image-with-margin" src="{{ asset('attachments/' ~ post.user.userinfo.file) }}" style="width: 90px;"/>
                 {% endif %}
                 <ul>
