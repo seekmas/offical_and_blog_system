@@ -22,7 +22,7 @@ class BlogController extends Controller
         $query = $this->get('blog')
              ->createQueryBuilder('blog')
              ->select('blog')
-             ->orderBy('blog.click' , 'desc')
+             ->orderBy('blog.id' , 'desc')
              ->getQuery();
 
         $paginator  = $this->get('knp_paginator');
@@ -32,7 +32,7 @@ class BlogController extends Controller
             10
         );
 
-        $latest = $this->get('blog')->setLimit(10)->findAllOrderById();
+        $latest = $this->get('blog')->setLimit(10)->findAllOrderBy('click' , 'desc');
         $comments = $this->get('comment')->setLimit(10)->findAllOrderById();
 
         return [

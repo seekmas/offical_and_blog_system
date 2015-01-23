@@ -15,11 +15,11 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $block = $this->get('block')->findOneBy(['aliasForUrl' => '/']);
-        $blogs = $this->get('blog')->setLimit(10)->findAllOrderBy('click' , 'desc');
+        $blogs = $this->get('blog')->setLimit(16)->findAllOrderBy('id' , 'desc');
 
         $seo = $this->get('seo')->find(1);
 
-        $feeds = $this->get('news')->setLimit(10)->findAllOrderBy('id' , 'desc');
+        $feeds = $this->get('news')->setLimit(16)->findAllOrderBy('id' , 'desc');
 
         $sliders = $this->get('slider')->findAll();
 

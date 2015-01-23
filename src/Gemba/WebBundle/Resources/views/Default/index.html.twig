@@ -28,6 +28,15 @@
 
         </div>
 
+        {% for key , slider in sliders %}
+            <div id="htmlcaption{{ key }}" class="nivo-caption">
+                <h3>{{ slider.subject }}</h3>
+                <p>{{ slider.content | raw }}</p>
+                <br/>
+                <p><a href="{{ slider.link }}" class="button black">更多</a></p>
+            </div>
+        {% endfor %}
+
     </div>
 
     <div class="main-wrapper">
@@ -58,7 +67,7 @@
                             {% endfor %}
 
                         </div></div>
-                    <div class="scrollbar-holder"><div style="width: 632px; left: 0px;" class="scrollbar dark"></div></div>/div>
+                    <div class="scrollbar-holder"><div style="width: 632px; left: 0px;" class="scrollbar dark"></div></div>
             </div>
 
 
